@@ -122,7 +122,7 @@ function validateEmail(email) {
 }
 
 var error = validateEmail(email);
-//console.log(error);
+//console.log(error);;
 
 //const selectElement = document.querySelector('.js-auto');
 
