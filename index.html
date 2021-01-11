@@ -24,5 +24,60 @@
 </label>
 
 <script src="main.js"></script>
+
+<script>
+    element = $(".js-ele");
+
+    element.removeClass("ele-red");
+
+    element.addClass("ele-green");
+
+    if (element.hasClass("ele-green")) {
+        // console.log("c'è la class green")
+    } else {
+        //  console.log("non c'è la class green")
+    }
+
+    element.attr("id", "mioid");
+    // console.log(element.attr("id"))
+
+
+    // questa funzione restituisce tutto HTML "elemento 1" get element
+    //console.log(element.html());
+    element.html("<p>ciao mamma</p>", "a");//<div class="js-ele ele-red"><p>ciao mamma</p></div>  set element
+
+    var email = $("#email_utente").val();
+
+    //console.log(email);
+
+    function validateEmail(email) {
+        const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    }
+
+    var error = validateEmail(email);
+    //console.log(error);;
+
+    //const selectElement = document.querySelector('.js-auto');
+
+    //selectElement.addEventListener('change', (event) => {
+
+    //console.log(event.target);
+
+    //console.log( $(event.target).html());
+
+    //});
+
+    var element2 = $(".trimmed");
+
+    console.log(element2.trim());
+    //element2.trim()
+
+    element.append("<p>Test</p>");
+    element.html("<p>Test2</p>", 'p');
+    // element.remove()
+
+</script>
+
 </body>
 </html>
