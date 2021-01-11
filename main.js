@@ -64,12 +64,41 @@ var $ = function (selector, parent) {
                     if (param == "a") {
                         this.element.innerHTML += _string;
                     }
+                    if (param == "p") {
+                        this.element.innerHTML = _string + this.element.innerHTML;
+                    }
                 }
 
             } catch (e) {
                 console.log(e);
             }
         },
+        append(_string) { // a=appent,w=change
+            try {
+                this.html(_string, "a");
+
+            } catch (e) {
+                console.log(e);
+            }
+        },
+        prepend(_string) { // a=appent,w=change
+            try {
+                this.html(_string, "p");
+
+            } catch (e) {
+                console.log(e);
+            }
+        },
+
+        remove() {
+            try {
+                this.element.remove();
+
+            } catch (e) {
+                console.log(e);
+            }
+        },
+
         val(value) {
             try {
                 if (value == null || value == undefined) {
@@ -87,7 +116,7 @@ var $ = function (selector, parent) {
             } catch (e) {
                 console.log(e);
             }
-        },
+        }
 
     }
 };
@@ -138,3 +167,7 @@ var element2 = $(".trimmed");
 
 console.log(element2.trim());
 //element2.trim()
+
+element.append("<p>Test</p>");
+element.html("<p>Test2</p>", 'p');
+// element.remove()
