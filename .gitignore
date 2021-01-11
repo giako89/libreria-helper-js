@@ -1,1 +1,6 @@
-.idea
+node_modules/
+public/
+.DS_STORE
+.idea/
+package-lock.json
+.env
