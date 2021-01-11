@@ -1,20 +1,35 @@
+function convertNodeList(_string,parent) {
+
+    let elements = (parent ? parent : document).querySelectorAll(_string);
+    let elementsArr = Array.prototype.slice.call(elements);
+
+    return elementsArr;
+}
+
+function createElement(selector)
+{
+      let  elements = selector.type != undefined ? selector.type : convertNodeList(selector);
+
+    return elements;
+}
+
 var $ = function (selector, parent) {
 
     return {
         selector: selector,
         parent: parent,
-        element: selector.type != undefined ? selector.type : (parent ? parent : document).querySelector(selector),
+        element: createElement(selector,parent),
         addClass: function (_class) {
             try {
-                this.element.classList.add(_class);
+                this.element.forEach(element => element.classList.add(_class));
             } catch (e) {
                 console.log(e);
             }
-
         },
         removeClass: function (_class) {
             try {
-                this.element.classList.remove(_class);
+                this.element.forEach(element => element.classList.remove(_class));
+                //this.element.classList.remove(_class);
             } catch (e) {
                 console.log(e);
             }
@@ -22,14 +37,14 @@ var $ = function (selector, parent) {
         hasClass(_class) {
             try {
                 let _classj = "." + _class;
-                return this.element.matches(_classj);
+                return this.element[0].matches(_classj);
             } catch (e) {
                 console.log(e);
             }
         },
         toggleClass(_class) {
             try {
-                this.element.classList.toggle(_class);
+                this.element.forEach(element => element.classList.toggle(_class));
             } catch (e) {
                 console.log(e);
             }
@@ -37,9 +52,9 @@ var $ = function (selector, parent) {
         attr(_string, value) {
             try {
                 if (value == null || value == undefined) {
-                    return this.element.getAttribute(_string);
+                    return this.element[0].getAttribute(_string);
                 } else {
-                    this.element.setAttribute(_string, value);
+                    this.element[0].setAttribute(_string, value);
                 }
 
             } catch (e) {
@@ -48,7 +63,7 @@ var $ = function (selector, parent) {
         },
         removeAttr(_string) {
             try {
-                this.element.removeAttribute(_string);
+                this.element[0].removeAttribute(_string);
             } catch (e) {
                 console.log(e);
             }
@@ -56,13 +71,13 @@ var $ = function (selector, parent) {
         html(_string, param = "w") { // a=appent,w=change
             try {
                 if (_string == null || _string == undefined) {
-                    return this.element.innerHTML;
+                    return this.element[0].innerHTML;
                 } else {
                     if (param == "w") {
-                        this.element.innerHTML = _string;
+                        this.element[0].innerHTML = _string;
                     }
                     if (param == "a") {
-                        this.element.innerHTML += _string;
+                        this.element[0].innerHTML += _string;
                     }
                 }
 
